@@ -222,9 +222,17 @@ def data_lama(array_makanan):
 # Void Function
 
 def menu():
-    print("\n-----Database Rumah Tangga-----")  
-    print("\n1. Menambah Data" "\n2. Mengubah Data" "\n3. Hapus Data" "\n4. Search Data" "\n5. Sort Data" "\n6. Data Lama" "\n7. Cancle\n")
-    
+    # print("\n-----Database Rumah Tangga-----")  
+    # print("\n1. Menambah Data" "\n2. Mengubah Data" "\n3. Hapus Data" "\n4. Search Data" "\n5. Sort Data" "\n6. Data Lama" "\n7. Cancle\n")
+    print("\n╔══════════════════════════════════════╗")
+    print("║          🏠 DATABASE MENU              ║")
+    print("╠══════════════════╦═════════════════════╣")
+    print("║ 1️⃣ Tambah Data  ║ 4️⃣ Search Data      ║")
+    print("║ 2️⃣ Ubah Data    ║ 5️⃣ Sort Data        ║")
+    print("║ 3️⃣ Hapus Data   ║ 6️⃣ Data Lama        ║")
+    print("╠══════════════════╩═════════════════════╣")
+    print("║              7️⃣ Exit                  ║")
+    print("╚════════════════════════════════════════╝")
 
 def menusort():
     print("\n---Menu Sort---")
