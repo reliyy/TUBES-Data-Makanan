@@ -94,23 +94,30 @@ def searchmakanbinary(array_makanan):
         
 
 def hapusdata(array_makanan):
-    data_lama(array_makanan)
-    target = input("Masukkan item yang ingin dihapus: ").lower()
-    ketemu = False
+    while True:
+        
+        data_lama(array_makanan)
+        target = input("Masukkan item yang ingin dihapus: ").lower()
+        ketemu = False
     
-    for i in range(len(array_makanan)):
-        if array_makanan[i]["makanan"].lower() == target:
+        for i in range(len(array_makanan)):
+            if array_makanan[i]["makanan"].lower() == target:
             
-            data_delete = array_makanan.pop(i)
-            ketemu = True
-            print(f"item {data_delete["makanan"]} berhasil di delete")
+                data_delete = array_makanan.pop(i)
+                ketemu = True
+                print(f"item {data_delete["makanan"]} berhasil di delete")
+                break
+        if not ketemu:
+            print("Item tidak ditemukan")
+            continue
+        else:
             break
-    if not ketemu:
-        print("Item tidak ditemukan")
         
         
 
 def mengubahdata(array_makanan):
+    
+    data_lama(array_makanan)
     
     ketemu = False
     
@@ -121,30 +128,36 @@ def mengubahdata(array_makanan):
     target = input("Masukkan nama data yang ingin diubah: ").lower()
     if target == "1":
         return
+    
     else:
         
-        data_lama(array_makanan)
         for i in range(len(array_makanan)):
+            
             if array_makanan[i]["makanan"].lower() == target:        
+                
                 print("Jika tidak ingin mengubah data tersebut kosongkan dan langsung tekan Enter")
+                
+                nama_baru = input("Masukkan Nama baru: ")
+                Stock_baru = input("Masukkan Stock baru: ")
+                exp_baru = input("Masukkan tanggal kadaluarsa baru (dd/mm/yyyy): ")
             
-            nama_baru = input("Masukkan Nama baru: ")
-            Stock_baru = input("Masukkan Stock baru: ")
-            exp_baru = input("Masukkan tanggal kadaluarsa baru (dd/mm/yyyy): ")
+                if nama_baru != "":
+                    array_makanan[i]["makanan"] = nama_baru
+                elif Stock_baru != "":
+                    array_makanan[i]["stock"] = Stock_baru
+                elif exp_baru != "":
+                    array_makanan[i]["tgl"] = exp_baru
+                
+                print("Data berhasil diubah!")
+                ketemu = True
+                break
             
-            if nama_baru != "":
-                array_makanan[i]["makanan"] = nama_baru
-            elif Stock_baru != "":
-                array_makanan[i]["stock"] = Stock_baru
-            elif exp_baru != "":
-                array_makanan[i]["tgl"] = exp_baru
-            print("Data berhasil diubah!")
-            ketemu = True
-            break
-            
-    if not ketemu:
-        print(f"Data {target} tidak tersedia!") 
+            else:
+                print(f"\nData {target} tidak tersedia!")
+                continue 
 
+            
+    
 
 
 def sortdata(array_makanan):
@@ -158,6 +171,7 @@ def sortdata(array_makanan):
     targetad = int(input("Pilih Menu (Angka): "))
     
     if targetsort == 1: 
+        
         if targetad == 1:
             array_makanan.sort(key=lambda x: x["makanan"].lower())
             print("\nData berhasil di sort")
@@ -169,17 +183,19 @@ def sortdata(array_makanan):
             return
                 
     elif targetsort == 2:
+        
         if targetad == 1:
-            array_makanan.sort(key=lambda x: x["stock"].lower())
+            array_makanan.sort(key=lambda x: x["stock"])
             print("\nData berhasil di sort")
         elif targetad == 2:
-            array_makanan.sort(key=lambda x: x["stock"].lower(), reverse = True)
+            array_makanan.sort(key=lambda x: x["stock"], reverse = True)
             print("\nData berhasil di sort")
         else:
             print("\nMenu tidak tersedia")
             return
     
     elif targetsort == 3:
+        
         if targetad == 1:
             array_makanan.sort(key=lambda x: x["tgl"].lower())
             print("\nData berhasil di sort")
@@ -204,6 +220,7 @@ def data_lama(array_makanan):
 
 
 # Void Function
+
 def menu():
     print("\n-----Database Rumah Tangga-----")  
     print("\n1. Menambah Data" "\n2. Mengubah Data" "\n3. Hapus Data" "\n4. Search Data" "\n5. Sort Data" "\n6. Data Lama" "\n7. Cancle\n")
@@ -235,7 +252,6 @@ while True:
     
     elif a == "2":
         print("\n---Menu Mengubah---" "\n*ketik 1 untuk cancle")
-        data_lama(data_makanan)
         mengubahdata(data_makanan)
         continue
     
