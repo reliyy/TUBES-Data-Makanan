@@ -147,6 +147,55 @@ def mengubahdata(array_makanan):
 
 
 
+def sortdata(array_makanan):
+    if len(array_makanan) == 0:
+        print("Data Kosong")
+        return
+    menusort()
+    targetsort = int(input("Pilih Menu (Angka): "))
+    
+    menuUD()
+    targetad = int(input("Pilih Menu (Angka): "))
+    
+    if targetsort == 1: 
+        if targetad == 1:
+            array_makanan.sort(key=lambda x: x["makanan"].lower())
+            print("\nData berhasil di sort")
+        elif targetad == 2:
+            array_makanan.sort(key=lambda x: x["makanan"].lower(), reverse = True)
+            print("\nData berhasil di sort")
+        else:
+            print("\nMenu tidak tersedia")
+            return
+                
+    elif targetsort == 2:
+        if targetad == 1:
+            array_makanan.sort(key=lambda x: x["stock"].lower())
+            print("\nData berhasil di sort")
+        elif targetad == 2:
+            array_makanan.sort(key=lambda x: x["stock"].lower(), reverse = True)
+            print("\nData berhasil di sort")
+        else:
+            print("\nMenu tidak tersedia")
+            return
+    
+    elif targetsort == 3:
+        if targetad == 1:
+            array_makanan.sort(key=lambda x: x["tgl"].lower())
+            print("\nData berhasil di sort")
+        elif targetad == 2:
+            array_makanan.sort(key=lambda x: x["tgl"], reverse = True)
+            print("\nData berhasil di sort")  
+        else:
+            print("\nMenu tidak tersedia")
+            return                  
+            
+            
+            
+    
+    
+
+
 def data_lama(array_makanan):
     
     for i, item in enumerate(array_makanan, start = 1):
@@ -157,10 +206,17 @@ def data_lama(array_makanan):
 # Void Function
 def menu():
     print("\n-----Database Rumah Tangga-----")  
-    print("\n1. Menambah Data" "\n2. Mengubah Data" "\n3. Hapus Data" "\n4. Search Data" "\n5. Cancle\n")
+    print("\n1. Menambah Data" "\n2. Mengubah Data" "\n3. Hapus Data" "\n4. Search Data" "\n5. Sort Data" "\n6. Data Lama" "\n7. Cancle\n")
     
-    
-    
+
+def menusort():
+    print("\n---Menu Sort---")
+    print("\n1. Nama" "\n2. Stock" "\n3. Tanggal Expired")
+
+def menuUD():
+    print("\n1. Ascending (A-Z)" "\n2. Descending (Z-A)")
+        
+        
 def menus():
     print("\n---Metode Search---\n" "\n1. Sequantial \n2. Binary")    
 
@@ -198,8 +254,25 @@ while True:
             hasil2 = searchmakanbinary(data_makanan)
             print(f"Search Binary: {hasil2}")
             continue
-       
+    
     elif a == "5":
+        sortdata(data_makanan)
+        continue
+    
+    elif a == "6":
+        while True:
+            
+         data_lama(data_makanan)
+         cek = input("Apakah ingin kembali ke menu utama (Y/N): ")
+         if cek.lower() == "y":
+            break
+            
+        
+        
+        
+            
+        
+    elif a == "7":
         print("Program berhenti!")
         break
                           
