@@ -267,11 +267,7 @@ while True:
          if cek.lower() == "y":
             break
             
-        
-        
-        
             
-        
     elif a == "7":
         print("Program berhenti!")
         break
