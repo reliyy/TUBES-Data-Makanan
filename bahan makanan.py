@@ -95,7 +95,7 @@ def searchmakanbinary(array_makanan):
 
 def hapusdata(array_makanan):
     data_lama(array_makanan)
-    target = input("Masukkan item yang ingin dihapus: ").lower()
+    target = input("Masukkan Nama item yang ingin dihapus: ").lower()
     ketemu = False
     
     for i in range(len(array_makanan)):
