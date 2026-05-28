@@ -16,26 +16,23 @@ def cekexp(array_makanan):
 
         str_tgl = data["tgl"]
 
-        # ubah string jadi datetime
+        
         tgl_exp = datetime.strptime(str_tgl, "%d/%m/%Y")
 
-        # selisih hari
+        
         sisa_hari = (tgl_exp - sekarang).days
 
-        # sudah expired
         if sisa_hari < 0:
             print(f" {data['makanan']} sudah EXPIRED!")
             print(f"   Stock : {data['stock']}")
             print(f"   Exp   : {str_tgl}")
 
-        # mendekati expired
         elif sisa_hari <= 7:
             print(f" {data['makanan']} mendekati expired!")
             print(f"   Stock : {data['stock']}")
             print(f"   Exp   : {str_tgl}")
             print(f"   Sisa  : {sisa_hari} hari lagi")
 
-        # masih aman
         else:
             print(f" {data['makanan']} masih aman")
             print(f"   Exp : {str_tgl}")
