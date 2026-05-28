@@ -151,6 +151,7 @@ def sortdata(array_makanan):
     if len(array_makanan) == 0:
         print("Data Kosong")
         return
+    
     menusort()
     targetsort = int(input("Pilih Menu (Angka): "))
     
@@ -271,6 +272,10 @@ while True:
     elif a == "7":
         print("Program berhenti!")
         break
+    
+    elif a == "8":
+        cekexp(data_makanan)
+        continue
                           
         
 
