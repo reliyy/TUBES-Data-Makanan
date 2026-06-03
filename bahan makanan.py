@@ -148,16 +148,17 @@ def mengubahdata(array_makanan):
             if array_makanan[i]["makanan"].lower() == target:        
                 print("Jika tidak ingin mengubah data tersebut kosongkan dan langsung tekan Enter")
             
-            nama_baru = input("Masukkan Nama baru: ")
-            Stock_baru = input("Masukkan Stock baru: ")
-            exp_baru = input("Masukkan tanggal kadaluarsa baru (dd/mm/yyyy): ")
+                nama_baru = input("Masukkan Nama baru: ")
+                Stock_baru = input("Masukkan Stock baru: ")
+                exp_baru = input("Masukkan tanggal kadaluarsa baru (dd/mm/yyyy): ")
             
-            if nama_baru != "":
-                array_makanan[i]["makanan"] = nama_baru
-            elif Stock_baru != "":
-                array_makanan[i]["stock"] = Stock_baru
-            elif exp_baru != "":
-                array_makanan[i]["tgl"] = exp_baru
+                if nama_baru != "":
+                    array_makanan[i]["makanan"] = nama_baru
+                if Stock_baru != "":
+                    array_makanan[i]["stock"] = Stock_baru
+                if exp_baru != "":
+                    array_makanan[i]["tgl"] = exp_baru
+                    
             print("Data berhasil diubah!")
             ketemu = True
             break
