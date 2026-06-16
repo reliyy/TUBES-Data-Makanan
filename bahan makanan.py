@@ -72,16 +72,11 @@ def searchmakansquantial(array_makanan):
         if item["makanan"].lower() == search.lower():
             print(f"Tersedia {item}")
             ketemu = True
-        else:
-            print(f"item {item} tidak tersedia!")
-        
-        if not ketemu:
+              
+    if not ketemu:
             print("Item tidak tersedia")
                     
-        cek = input("Apakah ingin lanjut mencari data? (Y/N): ")
-        
-        if cek.lower() == "n":
-            return
+    
         
      
 def searchmakanbinary(array_makanan):
@@ -102,10 +97,10 @@ def searchmakanbinary(array_makanan):
             break
         elif nama_tengah < search:
             kiri = tengah + 1
-            break
+            
         else:
             kanan = tengah - 1
-            break
+            
             
     if not ketemu:
         print("Item tidak tersedia!")
@@ -159,12 +154,12 @@ def mengubahdata(array_makanan):
                 if exp_baru != "":
                     array_makanan[i]["tgl"] = exp_baru
                     
-            print("Data berhasil diubah!")
-            ketemu = True
-            break
+                print("Data berhasil diubah!")
+                ketemu = True
+                break
             
-    if not ketemu:
-        print(f"Data {target} tidak tersedia!") 
+        if not ketemu:
+            print(f"Data {target} tidak tersedia!") 
 
 
 
@@ -192,10 +187,10 @@ def sortdata(array_makanan):
                 
     elif targetsort == 2:
         if targetad == 1:
-            array_makanan.sort(key=lambda x: x["stock"].lower())
+            array_makanan.sort(key=lambda x: x["stock"])
             print("\nData berhasil di sort")
         elif targetad == 2:
-            array_makanan.sort(key=lambda x: x["stock"].lower(), reverse = True)
+            array_makanan.sort(key=lambda x: x["stock"], reverse = True)
             print("\nData berhasil di sort")
         else:
             print("\nMenu tidak tersedia")
@@ -203,10 +198,10 @@ def sortdata(array_makanan):
     
     elif targetsort == 3:
         if targetad == 1:
-            array_makanan.sort(key=lambda x: x["tgl"].lower())
+            array_makanan.sort(key=lambda x: datetime.strptime(x["tgl"], "%d/%m/%Y"))
             print("\nData berhasil di sort")
         elif targetad == 2:
-            array_makanan.sort(key=lambda x: x["tgl"], reverse = True)
+            array_makanan.sort(key=lambda x: datetime.strptime(x["tgl"], "%d/%m/%Y"), reverse = True)
             print("\nData berhasil di sort")  
         else:
             print("\nMenu tidak tersedia")
@@ -227,8 +222,6 @@ def data_lama(array_makanan):
 
 # Void Function
 def menu():
-    # print("\n-----Database Rumah Tangga-----")  
-    # print("\n1. Menambah Data" "\n2. Mengubah Data" "\n3. Hapus Data" "\n4. Search Data" "\n5. Sort Data" "\n6. Data Lama" "\n7. Cancle\n")
     print("\n╔══════════════════════════════════════╗")
     print("║          🏠 DATABASE MENU              ║")
     print("╠══════════════════╦═════════════════════╣")
@@ -279,12 +272,14 @@ while True:
         option = int(input("\nPilih metode search: "))
         if option == 1:
             hasil1 = searchmakansquantial(data_makanan)
-            print(f"Search squantial: {hasil1}")
             continue
         elif option == 2:
             hasil2 = searchmakanbinary(data_makanan)
-            print(f"Search Binary: {hasil2}")
             continue
+        
+        cek = input("Apakah ingin lanjut mencari data? (Y/N): ")
+        if cek.lower() == "n":
+            break
     
     elif a == "5":
         sortdata(data_makanan)
