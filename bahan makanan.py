@@ -8,7 +8,7 @@ def cekexp(array_makanan):
         print("Data kosong!")
         return
 
-    sekarang = datetime.now()
+    sekarang = datetime.now().date()
 
     print("\n--- CEK BARANG EXPIRED ---")
 
@@ -17,7 +17,7 @@ def cekexp(array_makanan):
         str_tgl = data["tgl"]
 
         
-        tgl_exp = datetime.strptime(str_tgl, "%d/%m/%Y")
+        tgl_exp = datetime.strptime(str_tgl, "%d/%m/%Y").date()
 
         
         sisa_hari = (tgl_exp - sekarang).days
@@ -44,13 +44,13 @@ def cekexp(array_makanan):
 
 def tambahdata(array_makanan):
     while True:
-        makanan = input("Masukkan Data Maknan: ")
+        makanan = input("Masukkan Data Makanan: ")
         stock = int(input("Masukkan jumlah stock makanan: "))
         tgl = input("Masukkan tanggal kadaluarsannya (dd/mm/yyyy): ")
-     
-     
+    
+    
         array_makanan.append({
-       
+        
         "makanan":makanan,
         "tgl": tgl,
         "stock": stock
@@ -72,13 +72,10 @@ def searchmakansquantial(array_makanan):
         if item["makanan"].lower() == search.lower():
             print(f"Tersedia {item}")
             ketemu = True
-              
+                
     if not ketemu:
             print("Item tidak tersedia")
-                    
-    
-        
-     
+            
 def searchmakanbinary(array_makanan):
     search = input("Masukkan Makanan yang ingin dicari: ").lower()
     
@@ -150,7 +147,7 @@ def mengubahdata(array_makanan):
                 if nama_baru != "":
                     array_makanan[i]["makanan"] = nama_baru
                 if Stock_baru != "":
-                    array_makanan[i]["stock"] = Stock_baru
+                    array_makanan[i]["stock"] = int(Stock_baru)
                 if exp_baru != "":
                     array_makanan[i]["tgl"] = exp_baru
                     
@@ -287,11 +284,10 @@ while True:
     
     elif a == "6":
         while True:
-            
-         data_lama(data_makanan)
-         cek = input("Apakah ingin kembali ke menu utama (Y/N): ")
-         if cek.lower() == "y":
-            break
+            data_lama(data_makanan)
+            cek = input("Apakah ingin kembali ke menu utama (Y/N): ")
+            if cek.lower() == "y":
+                break
             
         
     elif a == "7":
@@ -301,9 +297,3 @@ while True:
     elif a == "8":
         print("Program berhenti!")
         break
-                          
-        
-
-    
-        
-     
