@@ -92,7 +92,7 @@ def searchmakanbinary(array_makanan):
         nama_tengah = array_makanan[tengah]["makanan"].lower()
         
         if nama_tengah == search:
-            print("Item tersedia!")
+            print(f"Tersedia {search}")
             ketemu = True
             break
         elif nama_tengah < search:
